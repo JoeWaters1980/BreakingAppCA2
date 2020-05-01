@@ -7,45 +7,57 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Background>
-        <ImageBrush ImageSource="car-dashboard.jpg"/>
+        <ImageBrush ImageSource="DashBoard.jpg"/>
     </Window.Background>
 
 
-    <Grid>
+    <Grid VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="792">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="256*"/>
-            <ColumnDefinition Width="279*"/>
-            <ColumnDefinition Width="257*"/>
+            <ColumnDefinition Width="325*"/>
+            <ColumnDefinition Width="140*"/>
+            <ColumnDefinition Width="327*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="BtnSpeedEnter_Click" Background="Black" Margin="89,0,86,0" Height="53" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="104" Content="Start" ClipToBounds="True" Foreground="#FFEEEAEA" BorderBrush="#FF954141" Click="BtnSpeedEnter_Click_1" Grid.Column="1"/>
-        <TextBlock x:Name="Tbx_Speed_OutPut" HorizontalAlignment="Left" Margin="235,65,0,0" TextWrapping="Wrap" Text="Speed" VerticalAlignment="Top" Height="31" Width="140" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="Tbx_Speed_Input" HorizontalAlignment="Left" Height="15" Margin="99,300,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="65" Opacity="0.3" FontWeight="Bold" Grid.Column="1"/>
-        <Button x:Name="BtnCarAdd"  HorizontalAlignment="Left" Margin="140,345,0,0" VerticalAlignment="Top" Width="25" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FF3E3A3A" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" >
+        <Button x:Name="BtnSpeedEnter_Click" Background="Black" Margin="30,0,33,47" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="77" Content="Start" ClipToBounds="True" Foreground="#FFEEEAEA" BorderBrush="#FF954141" Click="BtnSpeedEnter_Click_1" Grid.Column="1" Cursor="Hand"/>
+        <TextBlock x:Name="Tbx_Speed_OutPut" Margin="131,190,95,0" TextWrapping="Wrap" Text="Speed" Height="35" Width="99" FontSize="16" FontFamily="Arial Black" Foreground="#FFF9F9F9" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"/>
+        <TextBox x:Name="Tbx_Speed_Input" HorizontalAlignment="Left" Height="30" Margin="23,240,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="94" FontWeight="Bold" Grid.Column="1" FontFamily="Arial Black" FontSize="16" BorderBrush="{x:Null}" Background="Black" SelectionBrush="{x:Null}" Foreground="White" TextAlignment="Center"/>
+        <Button x:Name="BtnCarAdd"  HorizontalAlignment="Left" Margin="95,350,0,0" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FF3E3A3A" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" >
             <Button.Background>
                 <ImageBrush ImageSource="carIconWhite.jpg"/>
             </Button.Background>
         </Button>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Height="241" Width="255" BorderBrush="#FFB2191B"
-                BorderThickness="2 2 2 2" CornerRadius="300 300 300 300"  Margin="14,125,0,0" RenderTransformOrigin="0.5,0.283" Grid.Column="1">
-            <Border Width="3" CornerRadius="300 300 0 0" Background="OrangeRed"  RenderTransformOrigin="0.5 1" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Margin="122,58,0,0">
-                <Border.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-124.506"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Border.RenderTransform>
-                <Border.Effect>
-                    <DropShadowEffect Color="black" ShadowDepth="2"/>
-                </Border.Effect>
-            </Border>
-        </Border>
-        <Grid>
-            <DataGrid x:Name="DataTest" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="10,50,0,0" VerticalAlignment="Top" Width="100"/>
-        </Grid>
+
+        <Path x:Name="Speed" Data="M288.78,200a98.78,98.78,0,1,1-118.51-96.79l8.38-14.52L190,69l11.35,19.68,8.38,14.52A98.79,98.79,0,0,1,288.78,200Z" Stroke="#FFAEFBFB" StrokeThickness="8" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" OpacityMask="WhiteSmoke" RenderTransformOrigin="0.5,0.565" Height="215.491" Width="167.151" Margin="95,89.509,62.849,114">
+            <Path.Effect>
+                <DropShadowEffect Color="WhiteSmoke" Direction="270" ShadowDepth="4" BlurRadius="15"/>
+            </Path.Effect>
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-120"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+
+
+        <TextBlock x:Name="TbxOutputBreak" Grid.Column="2" Margin="95,360,132,24" TextWrapping="Wrap" Text="TextBlock" Height="35" Width="100" Foreground="White" FontFamily="Arial Black" FontSize="16" TextAlignment="Center"/>
+
+        <Path x:Name="Dist" Data="M288.78,200a98.78,98.78,0,1,1-118.51-96.79l8.38-14.52L190,69l11.35,19.68,8.38,14.52A98.79,98.79,0,0,1,288.78,200Z" Stroke="#FF9510FF" StrokeThickness="8" HorizontalAlignment="Stretch" VerticalAlignment="Center" Stretch="Uniform" OpacityMask="#FFE6BBFF" RenderTransformOrigin="0.509,0.552" Height="190.005" Width="Auto" Margin="40,100,72,128.995" Grid.Column="2" >
+            <Path.Effect>
+                <DropShadowEffect Color="#FFEBBFFF" Direction="270" ShadowDepth="4" BlurRadius="12"/>
+            </Path.Effect>
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.21"/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
 
     </Grid>
 

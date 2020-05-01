@@ -61,15 +61,16 @@ namespace BreakingAppCA2
                 Console.WriteLine(vehicle);
                 // speed sent to the vechicle class to get the speed in kph
                 speedInKph = vehicle.GetSpeedInMPH(speed);
-                Console.WriteLine(speed);
+                
 
                 // breaking disatance is calulated from the vechicle class
                 breaking_distance = vehicle.GetBreakingDistanceInMPH(speed);
+                TbxOutputBreak.Text = breaking_distance.ToString();
 
                 totalThinkingDis = vehicle.getDistances(breaking_distance, speed);
                 Console.WriteLine(totalThinkingDis);
 
-                GetWeather();
+               //weather= GetWeather();
 
             }
             catch
@@ -78,48 +79,34 @@ namespace BreakingAppCA2
             }
 
         }
-        public void GetWeather()
-        {
-            //Looking for weather id where some conditions..
-            var query1 = from c in db.VecicleTypes
-                         //where c.TypeOfVechicle == "Car" 
-                        select c.Weather_Id;
+        //public string GetWeather(string weather)
+        //{
+        //    //Looking for weather id where some conditions..
+        //    var query1 = from c in db.VecicleTypes
+        //                where c.TypeOfVechicle == "Car" 
+        //                select c.Weather_Id;
 
-            int weatherId = query1.First();
+        //    int weatherId = query1.First();
 
-            var query2 = from w in db.Weathers
-                         where w.Id == weatherId
-                         select w.Condition;
+        //    var query2 = from w in db.Weathers
+        //                 where w.Id == weatherId
+        //                 select w.Condition;
 
-            string weatherCondition = query2.First();
+        //    string weatherCondition = query2.First();
 
+        //    foreach (string val in query2)
+        //    {
+        //        Console.WriteLine(val);
 
-            //var query = from c in db.VecicleTypes
-            //            from w in db.Weathers
-            //            join
-            //            where c.TypeOfVechicle == "Car"
-            //            select c;
+        //        return val;
+        //    }
 
-
-
-            //                where w.Condition == "dry"
-            //                select w;
+           
 
 
 
 
-
-            //            var categoryQuery =
-            //from cat in categories
-            //join prod in products on cat equals prod.Category
-            //select new { Category = cat, Name = prod.Name };
-
-
-
-
-
-            DataTest.ItemsSource = query1.ToList();
-        }
+        //}
 
         
     }

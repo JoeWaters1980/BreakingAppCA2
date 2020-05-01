@@ -170,6 +170,8 @@
     <Resource Include="car-dashboard.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="dashboardImg.jpg" />
+    <Resource Include="DashBoard.jpg" />
     <Content Include="VehicleApp.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
