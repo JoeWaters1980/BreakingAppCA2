@@ -19,10 +19,20 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="BtnSpeedEnter_Click" Background="Black" Margin="30,0,33,47" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="77" Content="Start" ClipToBounds="True" Foreground="#FFEEEAEA" BorderBrush="#FF954141" Click="BtnSpeedEnter_Click_1" Grid.Column="1" Cursor="Hand"/>
+        <Button x:Name="BtnSpeedEnter_Click" Margin="44.5,0,51.75,47.5" Height="33.25" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="43.75" ClipToBounds="True" Foreground="#FFFBF9F9" BorderBrush="#FF0F0F0F" Click="BtnSpeedEnter_Click_1" Grid.Column="1" Cursor="Hand" FontFamily="Arial Black" Content="Start" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+        <Ellipse HorizontalAlignment="Left" Height="54.224" Stroke="#FFFF2E00" StrokeThickness="8" VerticalAlignment="Top" Width="58.032" RenderTransformOrigin="0.5,0.5" Margin="35.734,329.263,0,0" Grid.Column="1">
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180.092"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+        </Ellipse>
         <TextBlock x:Name="Tbx_Speed_OutPut" Margin="131,190,95,0" TextWrapping="Wrap" Text="Speed" Height="35" Width="99" FontSize="16" FontFamily="Arial Black" Foreground="#FFF9F9F9" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"/>
         <TextBox x:Name="Tbx_Speed_Input" HorizontalAlignment="Left" Height="30" Margin="23,240,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="94" FontWeight="Bold" Grid.Column="1" FontFamily="Arial Black" FontSize="16" BorderBrush="{x:Null}" Background="Black" SelectionBrush="{x:Null}" Foreground="White" TextAlignment="Center"/>
-        <Button x:Name="BtnCarAdd"  HorizontalAlignment="Left" Margin="95,350,0,0" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FF3E3A3A" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" >
+        <Button x:Name="BtnCarAdd"  HorizontalAlignment="Left" Margin="74.25,342.75,0,0" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FFFCCE09" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" >
             <Button.Background>
                 <ImageBrush ImageSource="carIconWhite.jpg"/>
             </Button.Background>
@@ -58,6 +68,25 @@
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
+        <Button x:Name="Exit" Content="X" Grid.Column="2" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="23" Height="16.627" Background="Black" Foreground="White" FontFamily="Arial Black" BorderBrush="#FFFCCE09"/>
+        <Button x:Name="BtnVan"  HorizontalAlignment="Left" Margin="131,342.75,0,0" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FFFCCE09" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" >
+            <Button.Background>
+                <ImageBrush ImageSource="carIconWhite.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BtnBike"  HorizontalAlignment="Left" Margin="194.25,342.75,0,0" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FFFCCE09" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" >
+            <Button.Background>
+                <ImageBrush ImageSource="carIconWhite.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BtnLorrry"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FFFCCE09" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" Margin="244.25,342.75,0,0" >
+            <Button.Background>
+                <ImageBrush ImageSource="carIconWhite.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BtnICY"  Content ="I" HorizontalAlignment="Left" Height="34" Margin="10,140,0,0" VerticalAlignment="Top" Width="34" Grid.Column="1"/>
+        <Button x:Name="BtnDry"  Content ="d" HorizontalAlignment="Left" Height="34" Margin="83,140,0,0" VerticalAlignment="Top" Width="34" Grid.Column="1"/>
+        <Button x:Name="BtnWet"  Content ="w" HorizontalAlignment="Left" Height="34" Margin="54.25,182.777,0,0" VerticalAlignment="Top" Width="34" Grid.Column="1"/>
 
     </Grid>
 
