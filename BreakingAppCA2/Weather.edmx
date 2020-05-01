@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Weather.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="WeatherStoreContainer">
+    <EntitySet Name="WeatherTypes" EntityType="Weather.Store.WeatherTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Conditions" EntityType="Weather.Store.Conditions" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="WeatherTypeCondition" Association="Weather.Store.WeatherTypeCondition">
+      <End Role="WeatherType" EntitySet="WeatherTypes" />
+      <End Role="Condition" EntitySet="Conditions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="WeatherTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Weather" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Condition_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Conditions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mulitiplyer" Type="smallint" Nullable="false" />
+  </EntityType>
+  <Association Name="WeatherTypeCondition">
+    <End Role="WeatherType" Type="Weather.Store.WeatherTypes" Multiplicity="*" />
+    <End Role="Condition" Type="Weather.Store.Conditions" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Condition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WeatherType">
+        <PropertyRef Name="Condition_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Weather" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="WeatherContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WeatherTypes" EntityType="Weather.WeatherType" />
+          <EntitySet Name="Conditions" EntityType="Weather.Condition" />
+          <AssociationSet Name="WeatherTypeCondition" Association="Weather.WeatherTypeCondition">
+            <End Role="WeatherType" EntitySet="WeatherTypes" />
+            <End Role="Condition" EntitySet="Conditions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="WeatherType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Weather" Type="String" Nullable="false" />
+          <NavigationProperty Name="Condition" Relationship="Weather.WeatherTypeCondition" FromRole="WeatherType" ToRole="Condition" />
+        </EntityType>
+        <EntityType Name="Condition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mulitiplyer" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="WeatherType" Relationship="Weather.WeatherTypeCondition" FromRole="Condition" ToRole="WeatherType" />
+        </EntityType>
+        <Association Name="WeatherTypeCondition">
+          <End Type="Weather.WeatherType" Role="WeatherType" Multiplicity="1" />
+          <End Type="Weather.Condition" Role="Condition" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WeatherStoreContainer" CdmEntityContainer="WeatherContainer">
+    <EntitySetMapping Name="WeatherTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(Weather.WeatherType)">
+        <MappingFragment StoreEntitySet="WeatherTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Weather" ColumnName="Weather" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Conditions">
+      <EntityTypeMapping TypeName="IsTypeOf(Weather.Condition)">
+        <MappingFragment StoreEntitySet="Conditions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Mulitiplyer" ColumnName="Mulitiplyer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="WeatherTypeCondition" TypeName="Weather.WeatherTypeCondition" StoreEntitySet="WeatherTypes">
+      <EndProperty Name="Condition">
+        <ScalarProperty Name="Id" ColumnName="Condition_Id" />
+      </EndProperty>
+      <EndProperty Name="WeatherType">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
