@@ -27,11 +27,7 @@ namespace BreakingAppCA2
         {
             try
             {
-                if (vehicle == null)
-                {
-                    MessageBox.Show("please select a Vechicle");
-
-                }
+                
                 vehicle = new Vehicles("car");
             }
             catch
@@ -84,31 +80,45 @@ namespace BreakingAppCA2
         }
         public void GetWeather()
         {
+            //Looking for weather id where some conditions..
+            var query1 = from c in db.VecicleTypes
+                         //where c.TypeOfVechicle == "Car" 
+                        select c.Weather_Id;
 
-            var query = from c in db.VecicleTypes
-                        from w in db.Weathers
-                        join
-                        where c.TypeOfVechicle == "Car"
-                        select c;
-                        
-                        
-                           
-                            where w.Condition == "dry"
-                            select w;
+            int weatherId = query1.First();
 
+            var query2 = from w in db.Weathers
+                         where w.Id == weatherId
+                         select w.Condition;
 
-
-
-//            var categoryQuery =
-//from cat in categories
-//join prod in products on cat equals prod.Category
-//select new { Category = cat, Name = prod.Name };
+            string weatherCondition = query2.First();
 
 
+            //var query = from c in db.VecicleTypes
+            //            from w in db.Weathers
+            //            join
+            //            where c.TypeOfVechicle == "Car"
+            //            select c;
 
 
 
-            DataTest.ItemsSource = query.ToList();
+            //                where w.Condition == "dry"
+            //                select w;
+
+
+
+
+
+            //            var categoryQuery =
+            //from cat in categories
+            //join prod in products on cat equals prod.Category
+            //select new { Category = cat, Name = prod.Name };
+
+
+
+
+
+            DataTest.ItemsSource = query1.ToList();
         }
 
         

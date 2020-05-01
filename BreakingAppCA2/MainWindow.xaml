@@ -43,8 +43,9 @@
                 </Border.Effect>
             </Border>
         </Border>
-        <DataGrid x:Name="DataTest" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="10,50,0,0" VerticalAlignment="Top" Width="100"/>
-
+        <Grid>
+            <DataGrid x:Name="DataTest" Grid.Column="2" HorizontalAlignment="Left" Height="100" Margin="10,50,0,0" VerticalAlignment="Top" Width="100"/>
+        </Grid>
 
     </Grid>
 
