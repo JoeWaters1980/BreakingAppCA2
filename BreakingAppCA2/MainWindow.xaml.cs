@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Windows;
 using System.Linq;
+using System.Media;
+using System.Windows;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace BreakingAppCA2
 {
@@ -12,41 +14,34 @@ namespace BreakingAppCA2
     /// </summary>
     public partial class MainWindow : Window
     {
+        SoundPlayer _soundPlayer;
 
         private Vehicles vehicle;
 
         WeatherConDataEntities db = new WeatherConDataEntities();
-        
+
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void BtnAddCar(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                
-                vehicle = new Vehicles("car");
-            }
-            catch
-            {
 
-            }
-        }
-
-        private void BtnSpeedEnter_Click_1(object sender, RoutedEventArgs e)
+        private void BtnSpeedEnter_Click(object sender, RoutedEventArgs e)
         {
             // declare vairables
             int speed;
             double breaking_distance = 0.0;
             double totalThinkingDis = 0;
-            string weather;
+            string condition = "";
             string outputThink = "thinking distance in meters :";
             string outputtotalDis = "Total braking distance Feet :";
             double speedInKph;
+
             double totalCarLenght;
+
+            _soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/car.wav");
+            _soundPlayer.Play();
 
             try
             {
@@ -55,13 +50,16 @@ namespace BreakingAppCA2
 
                 Tbx_Speed_OutPut.Text = speed.ToString();
 
+
+
+
                 //    // adds the number from the text box calulates the breaking distance
                 //    //and displays it in the breaking distance textblock in feet
 
-                Console.WriteLine(vehicle);
-                // speed sent to the vechicle class to get the speed in kph
+                //Console.WriteLine(vehicle);
+                //// speed sent to the vechicle class to get the speed in kph
                 speedInKph = vehicle.GetSpeedInMPH(speed);
-                
+
 
                 // breaking disatance is calulated from the vechicle class
                 breaking_distance = vehicle.GetBreakingDistanceInMPH(speed);
@@ -70,7 +68,7 @@ namespace BreakingAppCA2
                 totalThinkingDis = vehicle.getDistances(breaking_distance, speed);
                 Console.WriteLine(totalThinkingDis);
 
-               //weather= GetWeather();
+
 
             }
             catch
@@ -79,36 +77,137 @@ namespace BreakingAppCA2
             }
 
         }
-        //public string GetWeather(string weather)
-        //{
-        //    //Looking for weather id where some conditions..
-        //    var query1 = from c in db.VecicleTypes
-        //                where c.TypeOfVechicle == "Car" 
-        //                select c.Weather_Id;
 
-        //    int weatherId = query1.First();
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
-        //    var query2 = from w in db.Weathers
-        //                 where w.Id == weatherId
-        //                 select w.Condition;
+        private void BtnICY_Click(object sender, RoutedEventArgs e)
+        {
+            var weatherQuery = from c in db.Weathers
+                               where c.Condition == "Icy"
+                               select c.Condition;
 
-        //    string weatherCondition = query2.First();
 
-        //    foreach (string val in query2)
-        //    {
-        //        Console.WriteLine(val);
+            string weatherCon = weatherQuery.First();
 
-        //        return val;
-        //    }
+            foreach (string var in weatherQuery)
+            {
+                Weath_Display.Text = var;
+            }
+            GetWeather(weatherCon);
 
-           
-
+        }
 
 
 
-        //}
+        private void BtnDry_Click(object sender, RoutedEventArgs e)
+        {
+            var weatherQuery = from c in db.Weathers
+                               where c.Condition == "Dry"
+                               select c.Condition;
 
-        
+
+            string weatherCon = weatherQuery.First();
+
+
+            foreach (string var in weatherQuery)
+            {
+                Weath_Display.Text = var;
+            }
+            GetWeather(weatherCon);
+
+
+        }
+
+        public string GetWeather(string weatherCon)
+        {
+            string condition = weatherCon;
+
+            return condition;
+
+        }
+
+
+        private void BtnWet_Click(object sender, RoutedEventArgs e)
+        {
+            var weatherQuery = from c in db.Weathers
+                               where c.Condition == "Wet"
+                               select c.Condition;
+
+
+            string weatherCon = weatherQuery.First();
+
+
+            foreach (string var in weatherQuery)
+            {
+                Weath_Display.Text = var;
+            }
+            GetWeather(weatherCon);
+
+        }
+
+        private void Btn_Add_Lorry_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                vehicle = new Vehicles("Lorry");
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void Btn_Add_Bike_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                vehicle = new Vehicles("Bike");
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void Btn_Add_Van_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                vehicle = new Vehicles("Van");
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void BtnCarAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                vehicle = new Vehicles("Car");
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+       
     }
 
 

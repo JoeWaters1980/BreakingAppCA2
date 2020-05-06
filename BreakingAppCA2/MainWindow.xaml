@@ -1,11 +1,12 @@
-﻿<Window x:Class="BreakingAppCA2.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BreakingAppCA2"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="BreakingAppCA2.MainWindow"
+        mc:Ignorable="d" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" Visibility="Visible" AllowsTransparency="True">
     <Window.Background>
         <ImageBrush ImageSource="DashBoard.jpg"/>
     </Window.Background>
@@ -13,32 +14,38 @@
 
     <Grid VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="792">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="325*"/>
-            <ColumnDefinition Width="140*"/>
-            <ColumnDefinition Width="327*"/>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="BtnSpeedEnter_Click" Margin="44.5,0,51.75,47.5" Height="33.25" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="43.75" ClipToBounds="True" Foreground="#FFFBF9F9" BorderBrush="#FF0F0F0F" Click="BtnSpeedEnter_Click_1" Grid.Column="1" Cursor="Hand" FontFamily="Arial Black" Content="Start" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
-        <Ellipse HorizontalAlignment="Left" Height="54.224" Stroke="#FFFF2E00" StrokeThickness="8" VerticalAlignment="Top" Width="58.032" RenderTransformOrigin="0.5,0.5" Margin="35.734,329.263,0,0" Grid.Column="1">
-            <Ellipse.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180.092"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Ellipse.RenderTransform>
-        </Ellipse>
-        <TextBlock x:Name="Tbx_Speed_OutPut" Margin="131,190,95,0" TextWrapping="Wrap" Text="Speed" Height="35" Width="99" FontSize="16" FontFamily="Arial Black" Foreground="#FFF9F9F9" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"/>
-        <TextBox x:Name="Tbx_Speed_Input" HorizontalAlignment="Left" Height="30" Margin="23,240,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="94" FontWeight="Bold" Grid.Column="1" FontFamily="Arial Black" FontSize="16" BorderBrush="{x:Null}" Background="Black" SelectionBrush="{x:Null}" Foreground="White" TextAlignment="Center"/>
-        <Button x:Name="BtnCarAdd"  HorizontalAlignment="Left" Margin="74.25,342.75,0,0" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FFFCCE09" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" >
+        <Button  x:Name="Btn_SpeedEnter_Click" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionAccentButton}"
+                 Margin="45,0,45,44" ClipToBounds="True"  
+                Click="BtnSpeedEnter_Click" Grid.Column="1" Cursor="Hand" FontFamily="Candara" Foreground="White" FontSize="20" Height="42" Width="Auto" FontWeight="Bold" VerticalAlignment="Bottom" Content="Start">
             <Button.Background>
-                <ImageBrush ImageSource="carIconWhite.jpg"/>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFF3F2F2" Offset="0.961"/>
+                    <GradientStop Color="#FFF90505" Offset="0.939"/>
+                </RadialGradientBrush>
             </Button.Background>
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFDCE01" Offset="0.426"/>
+                    <GradientStop Color="#FF3E3E42" Offset="1"/>
+                    <GradientStop Color="#FFFDFDFD" Offset="0.781"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
         </Button>
 
-        <Path x:Name="Speed" Data="M288.78,200a98.78,98.78,0,1,1-118.51-96.79l8.38-14.52L190,69l11.35,19.68,8.38,14.52A98.79,98.79,0,0,1,288.78,200Z" Stroke="#FFAEFBFB" StrokeThickness="8" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" OpacityMask="WhiteSmoke" RenderTransformOrigin="0.5,0.565" Height="215.491" Width="167.151" Margin="95,89.509,62.849,114">
+        <TextBlock x:Name="Tbx_Speed_OutPut" Margin="132,198,108,0" TextWrapping="Wrap" Text="Speed" Height="27" Width="88" FontSize="16" FontFamily="Candara" Foreground="#FFF9F9F9" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" FontWeight="Bold"/>
+
+        <TextBox x:Name="Tbx_Speed_Input" Height="30" Margin="25,240,25,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1" FontFamily="Arial Black" FontSize="16" BorderBrush="{x:Null}" Background="Black" SelectionBrush="{x:Null}" Foreground="White" TextAlignment="Center"/>
+
+        <Path x:Name="SpeedDial" Data="M36.932794,150.52592 A98.78,98.78,0,1,1,92.764592,278.3473 L72.195538,289.36643 53.095489,299.2835 56.401243,279.44898 59.706433,261.44929 A98.79,98.79,0,0,1,36.932794,150.52592 z" Stroke="#FFAEFBFB" StrokeThickness="8" VerticalAlignment="Top" Stretch="Uniform" OpacityMask="WhiteSmoke" RenderTransformOrigin="0.506,0.474" Margin="95,125.166,60,0" Height="190">
             <Path.Effect>
                 <DropShadowEffect Color="WhiteSmoke" Direction="270" ShadowDepth="4" BlurRadius="15"/>
             </Path.Effect>
@@ -46,16 +53,16 @@
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-120"/>
-                    <TranslateTransform/>
+                    <RotateTransform  Angle="{Binding Text,ElementName=Tbx_Speed_OutPut}"/>
+                    <TranslateTransform  />
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
 
 
-        <TextBlock x:Name="TbxOutputBreak" Grid.Column="2" Margin="95,360,132,24" TextWrapping="Wrap" Text="TextBlock" Height="35" Width="100" Foreground="White" FontFamily="Arial Black" FontSize="16" TextAlignment="Center"/>
+        <TextBlock x:Name="TbxOutputBreak" Grid.Column="2" Margin="100,353,107,47" TextWrapping="Wrap" Text="Breaking Distance" Foreground="White" FontFamily="Candara" FontSize="16" TextAlignment="Center" FontWeight="Bold"/>
 
-        <Path x:Name="Dist" Data="M288.78,200a98.78,98.78,0,1,1-118.51-96.79l8.38-14.52L190,69l11.35,19.68,8.38,14.52A98.79,98.79,0,0,1,288.78,200Z" Stroke="#FF9510FF" StrokeThickness="8" HorizontalAlignment="Stretch" VerticalAlignment="Center" Stretch="Uniform" OpacityMask="#FFE6BBFF" RenderTransformOrigin="0.509,0.552" Height="190.005" Width="Auto" Margin="40,100,72,128.995" Grid.Column="2" >
+        <Path x:Name="Dist" Data="M36.932794,150.52592 A98.78,98.78,0,1,1,92.764592,278.3473 L72.195538,289.36643 53.095489,299.2835 56.401243,279.44898 59.706433,261.44929 A98.79,98.79,0,0,1,36.932794,150.52592 z" Stroke="#FF9510FF" StrokeThickness="8" HorizontalAlignment="Stretch" VerticalAlignment="Top" Stretch="Uniform" OpacityMask="#FFE6BBFF" RenderTransformOrigin="0.515,0.511" Margin="74.5,127.5,81.5,0" Grid.Column="2" Height="180" >
             <Path.Effect>
                 <DropShadowEffect Color="#FFEBBFFF" Direction="270" ShadowDepth="4" BlurRadius="12"/>
             </Path.Effect>
@@ -63,30 +70,66 @@
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="0.21"/>
-                    <TranslateTransform X="0" Y="0"/>
+                    <RotateTransform Angle="{Binding Text,ElementName=TbxOutputBreak}"/>
+                    <TranslateTransform/>
                 </TransformGroup>
             </Path.RenderTransform>
         </Path>
-        <Button x:Name="Exit" Content="X" Grid.Column="2" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="23" Height="16.627" Background="Black" Foreground="White" FontFamily="Arial Black" BorderBrush="#FFFCCE09"/>
-        <Button x:Name="BtnVan"  HorizontalAlignment="Left" Margin="131,342.75,0,0" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FFFCCE09" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" >
+
+        <Button x:Name="Exit" Content="X" Grid.Column="2" HorizontalAlignment="Left" Margin="258,0,0,0" VerticalAlignment="Top" Width="42" Height="25" Click="Exit_Click" FontWeight="Bold" FontSize="16" Foreground="#FFFFFEFE" FontFamily="Candara" Background="#FFFCCE09" BorderBrush="White"/>
+
+        <Button x:Name="BtnICY"  Content ="Icy" HorizontalAlignment="Left" Height="30" Margin="27,140,0,0" VerticalAlignment="Top" Width="40" Grid.Column="1" Background="#FF673AB7" Click="BtnICY_Click" FontSize="11" Padding="6,4" BorderBrush="#FFFEFEFF" FontFamily="Candara" FontWeight="Bold"/>
+
+        <Button x:Name="BtnDry" HorizontalAlignment="Left" Height="30" Margin="77,140,0,0" VerticalAlignment="Top" Width="42" Grid.Column="1" Content="Dry" FontSize="12" FontWeight="Bold" HorizontalContentAlignment="Center" Padding="6,4" Click="BtnDry_Click" BorderBrush="White" FontFamily="Candara"/>
+
+        <Button x:Name="BtnWet"  Content ="Wet" Height="Auto" Margin="52,183,52,229" Grid.Column="1" Background="#FF673AB7" Padding="6,4" FontSize="12" FontWeight="Bold" Click="BtnWet_Click" BorderBrush="White" FontFamily="Candara"/>
+
+        <Label x:Name="Title" Content="Breaking Distance Calculator" HorizontalAlignment="Center" Margin="313,-10,299,0" VerticalAlignment="Top" Width="180" Foreground="#FFFFCD02" FontFamily="Candara" FontSize="14" HorizontalContentAlignment="Center" Height="35" Grid.ColumnSpan="3" FontWeight="Bold"/>
+
+        <TextBlock x:Name="Weath_Display" HorizontalAlignment="Left" Margin="149,51,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="91" Foreground="#FFFBFBFB" Grid.Column="2" RenderTransformOrigin="0.5,0.5"/>
+
+        <Button  x:Name="Btn_Add_Lorry" Content="Lorry" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionAccentButton}"
+            Margin="175,0,107,19" ClipToBounds="True" Cursor="Hand" FontFamily="Candara" Foreground="White" FontSize="16" Height="45" Width="Auto" FontWeight="Bold" VerticalAlignment="Bottom" Click="Btn_Add_Lorry_Click" BorderBrush="#FFFFFFFE">
             <Button.Background>
-                <ImageBrush ImageSource="carIconWhite.jpg"/>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFF3F2F2" Offset="0.961"/>
+                    <GradientStop Color="#FFFFCD02" Offset="0.939"/>
+                </RadialGradientBrush>
             </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
         </Button>
-        <Button x:Name="BtnBike"  HorizontalAlignment="Left" Margin="194.25,342.75,0,0" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FFFCCE09" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" >
+
+        <Button  x:Name="Btn_Add_Bike" Content="Bike" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionAccentButton}"
+            Margin="234.5,0,45.75,42.483" ClipToBounds="True" Cursor="Hand" FontFamily="Candara" FontSize="16" Height="45" FontWeight="Bold" VerticalAlignment="Bottom" Click="Btn_Add_Bike_Click" UseLayoutRounding="False" Background="#FFFFCD02" Foreground="#DDFBFBFB" Width="Auto">
+            <Button.BorderBrush>
+                <SolidColorBrush Color="#FFFAFBF9"/>
+            </Button.BorderBrush>
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+
+        <Button  x:Name="Btn_Add_Van" Content="Van" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionAccentButton}"
+            Margin="111,0,170,27" ClipToBounds="True" Cursor="Hand" FontFamily="Candara" Foreground="White" FontSize="16" Height="45" Width="Auto" FontWeight="Bold" VerticalAlignment="Bottom" Click="Btn_Add_Van_Click" BorderBrush="#FFFBFBFB">
             <Button.Background>
-                <ImageBrush ImageSource="carIconWhite.jpg"/>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFF3F2F2" Offset="0.961"/>
+                    <GradientStop Color="#FFFFCD02" Offset="0.939"/>
+                </RadialGradientBrush>
             </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
         </Button>
-        <Button x:Name="BtnLorrry"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="35" Foreground="#FFFDFCFC" BorderBrush="#FFFCCE09" Click="BtnAddCar" IsDefault="True" AutomationProperties.IsRequiredForForm="True" UseLayoutRounding="False" Cursor="Hand" Margin="244.25,342.75,0,0" >
-            <Button.Background>
-                <ImageBrush ImageSource="carIconWhite.jpg"/>
-            </Button.Background>
+
+        <Button  x:Name="BtnCarAdd" Content="Car" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionAccentButton}"
+            Margin="50,0,230,61" ClipToBounds="True" Cursor="Hand" FontFamily="Candara" FontSize="16" Height="45" Width="Auto" FontWeight="Bold" VerticalAlignment="Bottom" Click="BtnCarAdd_Click" Foreground="#FFFDFDFD" BorderBrush="#FFFBFBFB" Background="#FFFFCD02">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
         </Button>
-        <Button x:Name="BtnICY"  Content ="I" HorizontalAlignment="Left" Height="34" Margin="10,140,0,0" VerticalAlignment="Top" Width="34" Grid.Column="1"/>
-        <Button x:Name="BtnDry"  Content ="d" HorizontalAlignment="Left" Height="34" Margin="83,140,0,0" VerticalAlignment="Top" Width="34" Grid.Column="1"/>
-        <Button x:Name="BtnWet"  Content ="w" HorizontalAlignment="Left" Height="34" Margin="54.25,182.777,0,0" VerticalAlignment="Top" Width="34" Grid.Column="1"/>
 
     </Grid>
 

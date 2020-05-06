@@ -4,4 +4,13 @@
     <Profile Name="(Default)" />
   </Profiles>
   <Settings />
+
+                xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <!-- Other project build settings ... -->
+
+    <ItemGroup>
+      <Content Include="Peric.ttf" />
+      <Content Include="Pericl.ttf" />
+    </ItemGroup>
+  
 </SettingsFile>

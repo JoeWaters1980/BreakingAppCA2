@@ -1,17 +1,24 @@
 ﻿using System;
-using System.Windows;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace BreakingAppCA2
 {
+    
+
     class Vehicles
     {
 
 
         // Properties
-        public Vehicles vehicle;
+        
         public string VehicleType { get; set; }
+        public enum TypeOfWeather  {Dry,Wet,Icy }
         public double speed { get; }
+       
 
 
         // Constructors
@@ -20,8 +27,10 @@ namespace BreakingAppCA2
         {
 
             VehicleType = vechile;
+           
 
         }
+
 
 
         //Methods
@@ -31,12 +40,17 @@ namespace BreakingAppCA2
             return $"{VehicleType}";
         }
 
+        
+
+
         public double GetSpeedInMPH(int speed)
         {
             const double mphToKmph = 1.60934;
             return speed * mphToKmph;
+            
 
         }
+
 
         public double GetBreakingDistanceInMPH(int speed)
         {
