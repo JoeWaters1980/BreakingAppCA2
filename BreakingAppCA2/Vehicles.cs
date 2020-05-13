@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Windows;
+using System.Threading.Tasks;
 
 namespace BreakingAppCA2
 {
@@ -13,186 +13,176 @@ namespace BreakingAppCA2
     public class Vehicles
     {
 
-
         // Properties
-
-        public string VehicleType { get; set; }
-       // public enum TypeOfWeather { Dry, Wet, Icy }
-        public double Speed { get; }
-
         public int VechicleID { get; set; }
-        public virtual Weather Condition { get; set; }
+        public string VehicleType { get; set; }
+        // public enum TypeOfWeather { Dry, Wet, Icy }
+        //public double Speed { get; }
+        public int WeatherID { get; set; }
+        public virtual Weather Weather { get; set; }
+
+        //// Constructors
+        //public Vehicles() { }
 
 
-        // Constructors
-        public Vehicles() { }
+        //public Vehicles(string vehicle)
+        //{
 
+        //    VehicleType = vehicle;
 
-        public Vehicles(string vehicle)
-        {
-
-            VehicleType = vehicle;
-
-        }
+        //}
 
 
         //Methods
 
-        public override string ToString()
-        {
-            return $"{VehicleType}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{VehicleType}";
+        //}
+
+        //public double Get_Speed_InMPH(int speed)
+        //{
+        //    const double mphToKmph = 1.60934;
+        //    return speed * mphToKmph;
+
+
+        //}
+
+        //public double Get_Weather_Mulitiplyer(double weatherMulti)
+        //{
+
+        //    return weatherMulti;
+        //}
+
+        //public double Get_Breaking_DistanceInMPH(int speed, double weatherMulti)
+        //{
+        //    // speed entered by the user and the muilplyer is determined by the switch
+        //    double calulatedDistance = 0.00;
+
+        //    double breaking_distance = 0.00;
+        //    // To do add a array to loop through all possiablities
+        //    try
+        //    {
+
+        //        for (double i = weatherMulti; i < speed;)
+        //        {
+        //            i += 0.05;
+
+        //            breaking_distance = i;
+        //        }
+
+        //    }
+        //    catch (FormatException)
+        //    {
+        //        MessageBox.Show("You must enter a number in MPH");
+        //    }
+
+        //    // calulation for the breaking distance
+
+        //    calulatedDistance = speed * breaking_distance;
+
+        //    return calulatedDistance;
+        //}
+
+        //public double Get_Distances(double calulatedDistance, double speed)
+        //{
+        //    // formula for reaction distance
+
+        //    double thinkingDistance;
+        //    const double reactionTime = 3.33;
 
 
 
-
-        public double Get_Speed_InMPH(int speed)
-        {
-            const double mphToKmph = 1.60934;
-            return speed * mphToKmph;
-            
-
-        }
-
-        public double Get_Weather_Mulitiplyer(double weatherMulti)
-        {
-
-            return weatherMulti;
-        }
-
-        public double Get_Breaking_DistanceInMPH(int speed, double weatherMulti)
-        {
-            // speed entered by the user and the muilplyer is determined by the switch
-            double calulatedDistance = 0.00;
-
-            double breaking_distance=0.00;
-            // To do add a array to loop through all possiablities
-            try
-            {
-
-                for (double i = weatherMulti; i < speed;)
-                {
-                    i += 0.05;
-                    
-                    breaking_distance = i;
-                }
-
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("You must enter a number in MPH");
-            }
-
-            // calulation for the breaking distance
-
-            calulatedDistance = speed * breaking_distance;
-
-            return calulatedDistance;
-        }
-
-        public double Get_Distances(double calulatedDistance, double speed)
-        {
-            // formula for reaction distance
-
-            double thinkingDistance;
-            const double reactionTime = 3.33;
+        //    thinkingDistance = Math.Round(speed / reactionTime);
 
 
+        //    return thinkingDistance;
 
-            thinkingDistance = Math.Round(speed / reactionTime);
+        //}
 
+        //public double Get_Van_Distances(double caluatedDistance)
+        //{
+        //    const double underLoad = 1.33;
+        //    double underLoadDis = 0;
 
-            return thinkingDistance;
+        //    underLoadDis = caluatedDistance * underLoad;
 
-        }
+        //    return underLoadDis;
+        //}
 
-        public double Get_Van_Distances(double caluatedDistance)
-        {
-            const double underLoad = 1.33;
-            double underLoadDis = 0;
-
-            underLoadDis = caluatedDistance * underLoad;
-
-            return underLoadDis;
-        }
-
-
-
-        public double Get_Car_Length(double calulatedDistance)
-        {
-            const double carLength = 13.00;
-            double totalCarLength = 0;
+        //public double Get_Car_Length(double calulatedDistance)
+        //{
+        //    const double carLength = 13.00;
+        //    double totalCarLength = 0;
 
 
-            totalCarLength = calulatedDistance / carLength;
+        //    totalCarLength = calulatedDistance / carLength;
 
-            return totalCarLength;
-        }
+        //    return totalCarLength;
+        //}
 
-        public double Get_Lorry_Breaking_Distance_InMPH(int speed)
-        {
-            // speed entered by the user and the muilplyer is determined by the switch
-            double calulatedDistance;
-            double breaking_distance = 0.0;
+        //public double Get_Lorry_Breaking_Distance_InMPH(int speed)
+        //{
+        //    // speed entered by the user and the muilplyer is determined by the switch
+        //    double calulatedDistance;
+        //    double breaking_distance = 0.0;
 
 
-            try
-            {
+        //    try
+        //    {
 
-                // switch to assign the muliplyer
-                switch (speed)
-                {
-                    case 10:
-                        breaking_distance = 3.0;
+        //        // switch to assign the muliplyer
+        //        switch (speed)
+        //        {
+        //            case 10:
+        //                breaking_distance = 3.0;
 
-                        break;
-                    case 20:
-                        breaking_distance = 3.5;
-                        break;
-                    case 30:
-                        breaking_distance = 4.0;
-                        break;
-                    case 40:
-                        breaking_distance = 4.5;
-                        break;
-                    case 50:
-                        breaking_distance = 5.0;
-                        break;
-                    case 60:
-                        breaking_distance = 5.5;
-                        break;
-                    case 70:
-                        breaking_distance = 6.0;
-                        break;
+        //                break;
+        //            case 20:
+        //                breaking_distance = 3.5;
+        //                break;
+        //            case 30:
+        //                breaking_distance = 4.0;
+        //                break;
+        //            case 40:
+        //                breaking_distance = 4.5;
+        //                break;
+        //            case 50:
+        //                breaking_distance = 5.0;
+        //                break;
+        //            case 60:
+        //                breaking_distance = 5.5;
+        //                break;
+        //            case 70:
+        //                breaking_distance = 6.0;
+        //                break;
 
-                    default:
-                        MessageBox.Show("an error has happened");
-                        break;
+        //            default:
+        //                MessageBox.Show("an error has happened");
+        //                break;
 
-                }
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("You must enter a number in MPH");
-            }
+        //        }
+        //    }
+        //    catch (FormatException)
+        //    {
+        //        MessageBox.Show("You must enter a number in MPH");
+        //    }
 
-            // calulation for the breaking distance
+        //    // calulation for the breaking distance
 
-            calulatedDistance = (speed * breaking_distance);
+        //    calulatedDistance = (speed * breaking_distance);
 
-            return calulatedDistance;
-        }
+        //    return calulatedDistance;
+        //}
 
-       
-
-       
     }
     public class Weather
     {
 
-
         public int WeatherID { get; set; }
-        public string TypeOfWeather { get; set; }
+        public string TypeOfWeatherDry { get; set; }
+        public string TypeOfWeatherWet { get; set; }
+        public string TypeOfWeatherIcy { get; set; }
 
         public virtual List<Vehicles> Vehicles { get; set; }
 
@@ -203,12 +193,12 @@ namespace BreakingAppCA2
     public class WeatherData : DbContext
     {
         // overide the constructor to rename the database
-        public WeatherData() : base("WeatherConditionData") { }
+        public WeatherData() : base("MyWeatherConditionData") { }
 
         // A table of vehicles
-        public DbSet<Vehicles> Vehicles { get; set; }
+        public DbSet<Vehicles> VehiclesTBL { get; set; }
         // A table of weather
-        public DbSet<Weather> TypeOfWeather { get; set; }
+        public DbSet<Weather> WeatherTBL { get; set; }
 
     }
 

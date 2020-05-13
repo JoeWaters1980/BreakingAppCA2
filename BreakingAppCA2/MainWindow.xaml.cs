@@ -14,10 +14,8 @@ namespace BreakingAppCA2
         SoundPlayer _soundPlayer;
 
         // class used
-        private Vehicles vehicle;
+        //private Vehicles vehicle;
 
-        // database we use
-        WeatherConDataEntities db = new WeatherConDataEntities();
 
 
         public MainWindow()
@@ -47,32 +45,32 @@ namespace BreakingAppCA2
             //_soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/car.wav");
             _soundPlayer.Play();
 
-            try
-            {
-                // speed entered by the user
-                speed = int.Parse(Tbx_Speed_Input.Text);
+        //    //try
+        //    //{
+        //    //    // speed entered by the user
+        //    //    speed = int.Parse(Tbx_Speed_Input.Text);
 
-                Tbx_Speed_OutPut.Text = speed.ToString();
+        //    //    Tbx_Speed_OutPut.Text = speed.ToString();
 
-                speedInKph = vehicle.GetSpeedInMPH(speed);
-
-
-                // vehicle.GetWeatherMulitiplyer(weatherMulit);
-
-                // breaking disatance is calulated from the vechicle class
-                breaking_distance = vehicle.GetBreakingDistanceInMPH(speed, weatherMulit);
-                TbxOutputBreak.Text = breaking_distance.ToString();
-
-                totalThinkingDis = vehicle.GetDistances(breaking_distance, speed);
-                Console.WriteLine(totalThinkingDis);
+        //    //    speedInKph = vehicle.GetSpeedInMPH(speed);
 
 
+        //    //    // vehicle.GetWeatherMulitiplyer(weatherMulit);
 
-            }
-            catch
-            {
+        //    //    // breaking disatance is calulated from the vechicle class
+        //    //    breaking_distance = vehicle.GetBreakingDistanceInMPH(speed, weatherMulit);
+        //    //    TbxOutputBreak.Text = breaking_distance.ToString();
 
-            }
+        //    //    totalThinkingDis = vehicle.GetDistances(breaking_distance, speed);
+        //    //    Console.WriteLine(totalThinkingDis);
+
+
+
+        //    //}
+        //    //catch
+        //    //{
+
+        //    }
 
 
 
@@ -112,67 +110,67 @@ namespace BreakingAppCA2
 
         private void BtnICY_Click(object sender, RoutedEventArgs e)
         {
-            double mulitplyer = 10.00;
+            //double mulitplyer = 10.00;
 
-            var weatherQuery = from c in db.Weathers
-                               where c.Condition == "Icy"
-                               select c.Condition;
+            //var weatherQuery = from c in db.Weathers
+            //                   where c.Condition == "Icy"
+            //                   select c.Condition;
 
 
-            string weatherCon = weatherQuery.First();
+            //string weatherCon = weatherQuery.First();
 
-            foreach (string var in weatherQuery)
-            {
-                Weath_Display.Text = var;
-            }
+            //foreach (string var in weatherQuery)
+            //{
+            //    Weath_Display.Text = var;
+            //}
 
-            GetWeather(weatherCon);
+            //GetWeather(weatherCon);
 
-            GetMuliplyer(mulitplyer);
+            //GetMuliplyer(mulitplyer);
         }
 
         private void BtnDry_Click(object sender, RoutedEventArgs e)
         {
-            double mulitplyer = 0;
+            //double mulitplyer = 0;
 
-            var weatherQuery = from c in db.Weathers
-                               where c.Condition == "Dry"
-                               select c.Condition;
-
-
-            string weatherCon = weatherQuery.First();
+            //var weatherQuery = from c in db.Weathers
+            //                   where c.Condition == "Dry"
+            //                   select c.Condition;
 
 
-            foreach (string var in weatherQuery)
-            {
-                Weath_Display.Text = var;
-            }
+            //string weatherCon = weatherQuery.First();
 
-            GetWeather(weatherCon);
 
-            GetMuliplyer(mulitplyer);
+            //foreach (string var in weatherQuery)
+            //{
+            //    Weath_Display.Text = var;
+            //}
+
+            //GetWeather(weatherCon);
+
+            //GetMuliplyer(mulitplyer);
         }
 
 
         private void BtnWet_Click(object sender, RoutedEventArgs e)
         {
-            double mulitplyer = 2.00;
+            //double mulitplyer = 2.00;
 
-            var weatherQuery = from c in db.Weathers
-                               where c.Condition == "Wet"
-                               select c.Condition;
-
-
-            string weatherCon = weatherQuery.First();
+            //var weatherQuery = from c in db.Weathers
+            //                   where c.Condition == "Wet"
+            //                   select c.Condition;
 
 
-            foreach (string var in weatherQuery)
-            {
-                Weath_Display.Text = var;
-            }
-            GetWeather(weatherCon);
+            //string weatherCon = weatherQuery.First();
 
-            GetMuliplyer(mulitplyer);
+
+            //foreach (string var in weatherQuery)
+            //{
+            //    Weath_Display.Text = var;
+            //}
+            //GetWeather(weatherCon);
+
+            //GetMuliplyer(mulitplyer);
 
         }
 
@@ -218,116 +216,116 @@ namespace BreakingAppCA2
 
         private void Btn_Add_Lorry_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var VechicleQuery = from c in db.VecicleTypes
-                                    where c.TypeOfVechicle == "Car"
-                                    select c.TypeOfVechicle;
+            //try
+            //{
+            //    var VechicleQuery = from c in db.VecicleTypes
+            //                        where c.TypeOfVechicle == "Car"
+            //                        select c.TypeOfVechicle;
 
 
-                string TypeOfVechicle = VechicleQuery.First();
+            //    string TypeOfVechicle = VechicleQuery.First();
 
-                foreach (string var in VechicleQuery)
-                {
-                    Tbx_Dis_vech.Text = var;
-                }
+            //    foreach (string var in VechicleQuery)
+            //    {
+            //        Tbx_Dis_vech.Text = var;
+            //    }
 
-                GetVechicleType(TypeOfVechicle);
+            //    GetVechicleType(TypeOfVechicle);
 
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
 
-            }
+            //}
 
             _soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/lorry.wav");
 
         }
 
-        private string GetVechicleType(string typeOfVechicle)
-        {
+        //private string GetVechicleType(string typeOfVechicle)
+        //{
 
-            vehicle = new Vehicles(typeOfVechicle);
+        //    //vehicle = new Vehicles(typeOfVechicle);
 
-            return vehicle.ToString();
-        }
+        //    //return vehicle.ToString();
+        //}
 
         private void Btn_Add_Bike_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
 
-                var VechicleQuery = from c in db.VecicleTypes
-                                    where c.TypeOfVechicle == "Car"
-                                    select c.TypeOfVechicle;
+            //    var VechicleQuery = from c in db.VecicleTypes
+            //                        where c.TypeOfVechicle == "Car"
+            //                        select c.TypeOfVechicle;
 
 
-                string TypeOfVechicle = VechicleQuery.First();
+            //    string TypeOfVechicle = VechicleQuery.First();
 
-                foreach (string var in VechicleQuery)
-                {
-                    Tbx_Dis_vech.Text = var;
-                }
-                GetVechicleType(TypeOfVechicle);
+            //    foreach (string var in VechicleQuery)
+            //    {
+            //        Tbx_Dis_vech.Text = var;
+            //    }
+            //    GetVechicleType(TypeOfVechicle);
 
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
 
-            }
+            //}
             _soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/bike.wav");
         }
 
         private void Btn_Add_Van_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
 
-                var VechicleQuery = from c in db.VecicleTypes
-                                    where c.TypeOfVechicle == "Car"
-                                    select c.TypeOfVechicle;
-
-
-                string TypeOfVechicle = VechicleQuery.First();
-
-                foreach (string var in VechicleQuery)
-                {
-                    Tbx_Dis_vech.Text = var;
-                }
-                GetVechicleType(TypeOfVechicle);
+            //    var VechicleQuery = from c in db.VecicleTypes
+            //                        where c.TypeOfVechicle == "Car"
+            //                        select c.TypeOfVechicle;
 
 
-            }
-            catch
-            {
+            //    string TypeOfVechicle = VechicleQuery.First();
 
-            }
+            //    foreach (string var in VechicleQuery)
+            //    {
+            //        Tbx_Dis_vech.Text = var;
+            //    }
+            //    GetVechicleType(TypeOfVechicle);
+
+
+            //}
+            //catch
+            //{
+
+            //}
             _soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/car.wav");
         }
 
         private void BtnCarAdd_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
 
-                var VechicleQuery = from c in db.VecicleTypes
-                                    where c.TypeOfVechicle == "Car"
-                                    select c.TypeOfVechicle;
+            //    var VechicleQuery = from c in db.VecicleTypes
+            //                        where c.TypeOfVechicle == "Car"
+            //                        select c.TypeOfVechicle;
 
 
-                string TypeOfVechicle = VechicleQuery.First();
+            //    string TypeOfVechicle = VechicleQuery.First();
 
-                foreach (string var in VechicleQuery)
-                {
-                    Tbx_Dis_vech.Text = var;
-                }
-                GetVechicleType(TypeOfVechicle);
+            //    foreach (string var in VechicleQuery)
+            //    {
+            //        Tbx_Dis_vech.Text = var;
+            //    }
+            //    GetVechicleType(TypeOfVechicle);
 
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
 
-            }
+            //}
 
 
             _soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/car.wav");
