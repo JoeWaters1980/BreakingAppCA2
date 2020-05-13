@@ -10,13 +10,13 @@ namespace BreakingAppCA2
 {
 
 
-    class Vehicles
+    public class Vehicles
     {
 
 
         // Properties
 
-        public string VehicleType { get;}
+        public string VehicleType { get; set; }
        // public enum TypeOfWeather { Dry, Wet, Icy }
         public double Speed { get; }
 
@@ -25,6 +25,8 @@ namespace BreakingAppCA2
 
 
         // Constructors
+        public Vehicles() { }
+
 
         public Vehicles(string vehicle)
         {
@@ -181,34 +183,36 @@ namespace BreakingAppCA2
             return calulatedDistance;
         }
 
-        public class Weather
-        {
+       
+
+       
+    }
+    public class Weather
+    {
 
 
-            public int WeatherID { get; set; }
-            public string TypeOfWeather { get; set; }
+        public int WeatherID { get; set; }
+        public string TypeOfWeather { get; set; }
 
-            public virtual List<Vehicles> Vehicles { get; set; }
-
-        }
-
-        // this class will set up the tables in a database
-        public class WeatherData : DbContext
-        {
-            // overide the constructor to rename the database
-            public WeatherData(): base("WeatherConditionData") { }
-
-            // A table of vehicles
-            public DbSet<Vehicles> Vehicles { get; set; }
-            // A table of weather
-            public DbSet<Weather> Weather { get; set; }
-
-        }
+        public virtual List<Vehicles> Vehicles { get; set; }
 
     }
 
 
-   
+    // this class will set up the tables in a database
+    public class WeatherData : DbContext
+    {
+        // overide the constructor to rename the database
+        public WeatherData() : base("WeatherConditionData") { }
+
+        // A table of vehicles
+        public DbSet<Vehicles> Vehicles { get; set; }
+        // A table of weather
+        public DbSet<Weather> TypeOfWeather { get; set; }
+
+    }
+
+
 }
 
 
