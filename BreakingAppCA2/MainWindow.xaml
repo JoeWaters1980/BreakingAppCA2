@@ -41,10 +41,10 @@
             </Button.Effect>
         </Button>
 
-        <TextBlock x:Name="Tbx_Speed_OutPut" Margin="132,198,108,0" TextWrapping="Wrap" Text="Speed" Height="27" Width="88" FontSize="16" FontFamily="Candara" Foreground="#FFF9F9F9" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock x:Name="Tbx_Speed_OutPut" Margin="132,190,108,0" TextWrapping="Wrap" Text="Speed" Height="40" Width="88" FontSize="24" FontFamily="Candara" Foreground="#FFF9F9F9" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" FontWeight="Bold"/>
 
         <TextBox x:Name="Tbx_Speed_Input" Height="30" Margin="25,240,25,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1" FontFamily="Arial Black" FontSize="16" BorderBrush="{x:Null}" Background="Black" SelectionBrush="{x:Null}" Foreground="White" TextAlignment="Center"/>
-
+        <materialDesign:Card Content="Please Enter Speed In MPH" Grid.Column="1" Margin="5,219,5,0" VerticalAlignment="Top" Background="Black" Foreground="#FFFDFDFD" FontFamily="Calibri" FontWeight="Bold"/>
         <Path x:Name="SpeedDial" Data="M36.932794,150.52592 A98.78,98.78,0,1,1,92.764592,278.3473 L72.195538,289.36643 53.095489,299.2835 56.401243,279.44898 59.706433,261.44929 A98.79,98.79,0,0,1,36.932794,150.52592 z" Stroke="#FFAEFBFB" StrokeThickness="8" VerticalAlignment="Top" Stretch="Uniform" OpacityMask="WhiteSmoke" RenderTransformOrigin="0.506,0.474" Margin="95,125.166,60,0" Height="190">
             <Path.Effect>
                 <DropShadowEffect Color="WhiteSmoke" Direction="270" ShadowDepth="4" BlurRadius="15"/>
@@ -60,7 +60,7 @@
         </Path>
 
 
-        <TextBlock x:Name="TbxOutputBreak" Grid.Column="2" Margin="100,198,107,202" TextWrapping="Wrap" Text="Breaking Distance" Foreground="White" FontFamily="Candara" FontSize="16" TextAlignment="Center" FontWeight="Bold"/>
+        <TextBlock x:Name="TbxOutputBreak" Grid.Column="2" Margin="99,178,108,213" TextWrapping="Wrap" Text="Breaking Distance" Foreground="White" FontFamily="Candara" TextAlignment="Center" FontWeight="Bold" FontSize="20"/>
 
         <Path x:Name="Dist" Data="M36.932794,150.52592 A98.78,98.78,0,1,1,92.764592,278.3473 L72.195538,289.36643 53.095489,299.2835 56.401243,279.44898 59.706433,261.44929 A98.79,98.79,0,0,1,36.932794,150.52592 z" Stroke="#FF9510FF" StrokeThickness="8" HorizontalAlignment="Stretch" VerticalAlignment="Top" Stretch="Uniform" OpacityMask="#FFE6BBFF" RenderTransformOrigin="0.501,0.5" Margin="65.5,125.166,79.5,0" Grid.Column="2" Height="190" >
             <Path.Effect>
@@ -86,7 +86,7 @@
 
         <Label x:Name="Title" Content="Breaking Distance Calculator" HorizontalAlignment="Center" Margin="313,-10,299,0" VerticalAlignment="Top" Width="180" Foreground="#FFFFCD02" FontFamily="Candara" FontSize="14" HorizontalContentAlignment="Center" Height="35" Grid.ColumnSpan="3" FontWeight="Bold"/>
 
-        <TextBlock x:Name="Weath_Display" HorizontalAlignment="Left" Margin="100,29,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="91" Foreground="#FFFBFBFB" Grid.Column="2" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock x:Name="Weath_Display" HorizontalAlignment="Left" Margin="100,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="91" Foreground="#FFFBFBFB" Grid.Column="2" RenderTransformOrigin="0.5,0.5"/>
 
         <Button  x:Name="Btn_Add_Lorry" Content="Lorry" Style="{StaticResource ResourceKey=MaterialDesignFloatingActionAccentButton}"
             Margin="175,0,107,19" ClipToBounds="True" Cursor="Hand" FontFamily="Candara" Foreground="White" FontSize="16" Height="45" Width="Auto" FontWeight="Bold" VerticalAlignment="Bottom" Click="Btn_Add_Lorry_Click" BorderBrush="#FFFFFFFE">
@@ -132,7 +132,11 @@
         </Button>
         <Button x:Name="Btn_Min" Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="206,0,0,0" VerticalAlignment="Top" Width="42" Height="25" Click="BtnMin" FontWeight="Bold" FontSize="18" Foreground="#FFFFFEFE" FontFamily="Candara" Background="#FFFCCE09" BorderBrush="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" TextOptions.TextFormattingMode="Display"/>
 
-        <TextBlock x:Name="Tbx_Dis_vech" x:Uid="Dis_vech" HorizontalAlignment="Left" Margin="85,29,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="136" Height="27" Foreground="White"/>
+        <TextBlock x:Name="Tbx_Dis_vech" x:Uid="Dis_vech" HorizontalAlignment="Left" Margin="85,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" Height="27" Foreground="White"/>
+        <TextBlock x:Name="TbxOutputCarLengts" Grid.Column="2" Margin="66,338,0,43" TextWrapping="Wrap" Text="Thinking Distance" Height="59" Width="182" Foreground="White" FontWeight="Bold" FontFamily="Calibri" FontSize="9" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Distance in Meters" Grid.Column="2" HorizontalAlignment="Left" Margin="106,147,0,0" VerticalAlignment="Top" Width="98" Height="21" Foreground="#DDFFFFFF" FontFamily="Candara" FontSize="11" FontWeight="Bold"/>
+        <Label x:Name="LblVehicleSelect" Content="Select a vehicle " HorizontalAlignment="Left" Margin="120,331,0,0" VerticalAlignment="Top" Width="119" FontFamily="Calibri" FontWeight="Bold" Foreground="#DDFFFFFF" HorizontalContentAlignment="Center"/>
+
 
     </Grid>
 

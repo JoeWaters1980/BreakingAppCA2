@@ -32,18 +32,17 @@ namespace BreakingAppCA2
         {
             // declare vairables
             int speed;
+            double totalBreakingDistance = 0;
             double breaking_distance = 0.0;
             double totalThinkingDis = 0;
             string outputThink = "thinking distance in meters :";
             string outputtotalDis = "Total braking distance Feet :";
+            string outputtotalCarLengths = "Total braking distance in Car Lengths :";
             double speedInKph;
-            double weatherMulit = 0.00;
-
-
-
+            double weatherMulti= 0.0;
             double totalCarLenght;
 
-            
+
             _soundPlayer.Play();
 
             try
@@ -54,19 +53,15 @@ namespace BreakingAppCA2
                 Tbx_Speed_OutPut.Text = speed.ToString();
 
                 speedInKph = vehicle.Get_Speed_InMPH(speed);
-
-
-                // vehicle.GetWeatherMulitiplyer(weatherMulit);
-
+                weatherMulti = vehicle.Get_Weather_Mulitiplyer(weatherMulti);
                 // breaking disatance is calulated from the vechicle class
-                breaking_distance = vehicle.Get_Breaking_DistanceInMPH(speed, weatherMulit);
-                TbxOutputBreak.Text = breaking_distance.ToString();
-
+                breaking_distance = vehicle.Get_Breaking_DistanceInMPH(speed);
                 totalThinkingDis = vehicle.Get_Distances(breaking_distance, speed);
-                Console.WriteLine(totalThinkingDis);
-
-
-
+                totalCarLenght = vehicle.Get_Car_Length(breaking_distance);
+                totalBreakingDistance = (breaking_distance * weatherMulti);
+                TbxOutputBreak.Text = breaking_distance.ToString();
+                    //(totalBreakingDistance.ToString());
+                TbxOutputCarLengts.Text =(outputThink+" " + totalThinkingDis.ToString() + " " + outputtotalCarLengths + " " + (Math.Round (totalCarLenght).ToString())); 
             }
             catch
             {
@@ -75,14 +70,14 @@ namespace BreakingAppCA2
 
 
 
-    }
+        }
 
 
-    /*
-     * Method for Exiting the program
-     */
+        /*
+         * Method for Exiting the program
+         */
 
-    private void Exit_Click(object sender, RoutedEventArgs e)
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
@@ -127,7 +122,7 @@ namespace BreakingAppCA2
 
             GetWeather(weatherCon);
 
-            GetMuliplyer(mulitplyer);
+            GetMuliplyer(mulitplyer, weatherCon);
         }
 
         private void BtnDry_Click(object sender, RoutedEventArgs e)
@@ -149,7 +144,7 @@ namespace BreakingAppCA2
 
             GetWeather(weatherCon);
 
-            GetMuliplyer(mulitplyer);
+            GetMuliplyer(mulitplyer, weatherCon);
         }
 
 
@@ -170,8 +165,8 @@ namespace BreakingAppCA2
                 Weath_Display.Text = var;
             }
             GetWeather(weatherCon);
+            GetMuliplyer(mulitplyer, weatherCon);
 
-            GetMuliplyer(mulitplyer);
 
         }
 
@@ -199,8 +194,23 @@ namespace BreakingAppCA2
          * calulation
          */
 
-        private double GetMuliplyer(double mulitplyer)
+        private double GetMuliplyer(double mulitplyer, string weatherCon)
         {
+            if (weatherCon =="Dry")
+            {
+                mulitplyer = 0.0;
+            }
+
+            else if (weatherCon == "Wet")
+            {
+                mulitplyer = 2;
+            }
+
+            else if (weatherCon == "Icy")
+            {
+                mulitplyer = 10;
+            }
+
 
             return mulitplyer;
 
@@ -236,8 +246,8 @@ namespace BreakingAppCA2
             {
 
             }
-
-            _soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/lorry.wav");
+            // issue with the format of the file only the car plays
+             _soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/car.wav");
 
         }
 
@@ -255,7 +265,7 @@ namespace BreakingAppCA2
             {
 
                 var VechicleQuery = from c in db.VehiclesTBL
-                                    where c.VehicleType == "Car"
+                                    where c.VehicleType == "Bike"
                                     select c.VehicleType;
 
 
@@ -272,7 +282,8 @@ namespace BreakingAppCA2
             {
 
             }
-            _soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/bike.wav");
+            // issue with the format of the file only the car plays
+            _soundPlayer = new SoundPlayer("D:/Collage Work/Second Year/Programming Year 2/Sem 2/OOP/BreakingAppCA2/BreakingAppCA2/Sounds/car.wav");
         }
 
         private void Btn_Add_Van_Click(object sender, RoutedEventArgs e)
@@ -281,7 +292,7 @@ namespace BreakingAppCA2
             {
 
                 var VechicleQuery = from c in db.VehiclesTBL
-                                    where c.VehicleType == "Car"
+                                    where c.VehicleType == "Van"
                                     select c.VehicleType;
 
 

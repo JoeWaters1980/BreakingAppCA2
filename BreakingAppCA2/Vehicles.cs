@@ -22,7 +22,7 @@ namespace BreakingAppCA2
         public virtual List<Weather> Weather { get; set; }
 
         public double Speed { get; }
-
+        public double calulatedDistance=0.0;
 
         //// Constructors
         public Vehicles() { }
@@ -45,36 +45,77 @@ namespace BreakingAppCA2
 
         public double Get_Speed_InMPH(int speed)
         {
-            const double mphToKmph = 1.60934;
-            return speed * mphToKmph;
+           // const double mphToKmph = 1.60934;
+            return speed ;
 
 
         }
 
-        public double Get_Weather_Mulitiplyer(double weatherMulti)
-        {
+       
 
-            return weatherMulti;
-        }
-
-        public double Get_Breaking_DistanceInMPH(int speed, double weatherMulti)
+        public double Get_Breaking_DistanceInMPH(int speed)
         {
             // speed entered by the user and the muilplyer is determined by the switch
             double calulatedDistance = 0.00;
 
             double breaking_distance = 0.00;
-            // To do add a array to loop through all possiablities
             try
             {
-
-                for (double i = weatherMulti; i < speed;)
+                if (speed == 0)
                 {
-                    i += 0.005;
-
-                    breaking_distance = i;
+                    breaking_distance = 0;
                 }
-
+              
+                else if (speed <= 10 && speed < 20)
+                {
+                    breaking_distance = 1.0;
+                }
+                else if (speed >= 20 && speed < 30)
+                {
+                    breaking_distance = 2.0;
+                }
+                else if (speed >= 30 && speed < 40)
+                {
+                    breaking_distance = 2.5;
+                }
+                else if (speed >= 40 && speed < 50)
+                {
+                    breaking_distance = 3.0;
+                }
+                else if (speed >= 50 && speed < 60)
+                {
+                    breaking_distance = 3.5;
+                }
+                else if (speed >= 60 && speed < 70)
+                {
+                    breaking_distance = 4.0;
+                }
+                else if (speed >= 70 && speed < 80)
+                {
+                    breaking_distance = 4.5;
+                }
+                else if (speed >= 80 && speed < 90)
+                {
+                    breaking_distance = 5.0;
+                }
+                else if (speed >= 90 && speed < 100)
+                {
+                    breaking_distance = 5.5;
+                }
+                else if (speed >= 100 && speed < 110)
+                {
+                    breaking_distance = 6.0;
+                }
+                else if (speed >= 110 && speed < 120)
+                {
+                    breaking_distance = 6.5;
+                }
+                else if (speed >= 120 && speed < 130)
+                {
+                    breaking_distance = 7.0;
+                }
             }
+
             catch (FormatException)
             {
                 MessageBox.Show("You must enter a number in MPH");
@@ -82,7 +123,7 @@ namespace BreakingAppCA2
 
             // calulation for the breaking distance
 
-            calulatedDistance = Math.Round(speed * breaking_distance);
+            calulatedDistance = (speed * breaking_distance);
 
             return calulatedDistance;
         }
@@ -102,6 +143,13 @@ namespace BreakingAppCA2
             return thinkingDistance;
 
         }
+
+        public double Get_Weather_Mulitiplyer(double weatherMulti)
+        {
+
+            return weatherMulti;
+        }
+
 
         public double Get_Van_Distances(double caluatedDistance)
         {
@@ -124,64 +172,65 @@ namespace BreakingAppCA2
             return totalCarLength;
         }
 
-        public double Get_Lorry_Breaking_Distance_InMPH(int speed)
-        {
-            // speed entered by the user and the muilplyer is determined by the switch
-            double calulatedDistance;
-            double breaking_distance = 0.0;
+        //public double Get_Lorry_Breaking_Distance_InMPH(int speed)
+        //{
+        //    // speed entered by the user and the muilplyer is determined by the switch
+        //    double calulatedDistance;
+        //    double breaking_distance = 0.0;
 
 
-            try
-            {
+        //    try
+        //    {
 
-                // switch to assign the muliplyer
-                switch (speed)
-                {
-                    case 10:
-                        breaking_distance = 3.0;
+        //        // switch to assign the muliplyer
+        //        switch (speed)
+        //        {
+        //            case 10:
+        //                breaking_distance = 3.0;
 
-                        break;
-                    case 20:
-                        breaking_distance = 3.5;
-                        break;
-                    case 30:
-                        breaking_distance = 4.0;
-                        break;
-                    case 40:
-                        breaking_distance = 4.5;
-                        break;
-                    case 50:
-                        breaking_distance = 5.0;
-                        break;
-                    case 60:
-                        breaking_distance = 5.5;
-                        break;
-                    case 70:
-                        breaking_distance = 6.0;
-                        break;
+        //                break;
+        //            case 20:
+        //                breaking_distance = 3.5;
+        //                break;
+        //            case 30:
+        //                breaking_distance = 4.0;
+        //                break;
+        //            case 40:
+        //                breaking_distance = 4.5;
+        //                break;
+        //            case 50:
+        //                breaking_distance = 5.0;
+        //                break;
+        //            case 60:
+        //                breaking_distance = 5.5;
+        //                break;
+        //            case 70:
+        //                breaking_distance = 6.0;
+        //                break;
 
-                    default:
-                        MessageBox.Show("an error has happened");
-                        break;
+        //            default:
+        //                MessageBox.Show("an error has happened");
+        //                break;
 
-                }
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("You must enter a number in MPH");
-            }
+        //        }
+        //    }
+        //    catch (FormatException)
+        //    {
+        //        MessageBox.Show("You must enter a number in MPH");
+        //    }
 
-            // calulation for the breaking distance
+        //    // calulation for the breaking distance
 
-            calulatedDistance = (speed * breaking_distance);
+        //    calulatedDistance = (speed * breaking_distance);
 
-            return calulatedDistance;
-        }
+        //    return calulatedDistance;
+        //}
 
 
     }
     public class Weather
     {
+
         [System.ComponentModel.DataAnnotations.Key]
         public int WeatherID { get; set; }
         public string TypeOfWeatherDry { get; set; }
@@ -191,8 +240,9 @@ namespace BreakingAppCA2
         public int VechicleID { get; set; }
 
         public virtual Vehicles Vehicles { get; set; }
-        
+        //Methods
 
+      
     }
 
 
@@ -214,7 +264,7 @@ namespace BreakingAppCA2
 }
 
 
-//Notes:
+/*Notes:
 
 // thinking distance is approximately 1 foot for every mph you are travelling at.
 //Thinking distance + braking distance = overall stopping distance.
@@ -231,13 +281,11 @@ namespace BreakingAppCA2
 
 //(Average car length = 4 metres (13 feet)
 
-
 // d=vsquared / 2(coefficent of friction 0.60 dry)(g which is acceleration due to gravity or 9.80)
 
 // distance in meters is speed /3.33 then we change to feet
 // formula for reaction distance
-/* Formula: d = (s* r) / 3.6
-
+ Formula: d = (s* r) / 3.6
  d = reaction distance in metres(to be calculated).
  s = speed in km/h.
  r = fixed a 2sec.
